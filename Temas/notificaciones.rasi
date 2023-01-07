@@ -27,10 +27,10 @@ window {
     text-color:                     @fg;
 	border:							0px;
 	border-color:					@ac;
-    border-radius:                  0px;
+    border-radius:                  5px;
 	width:							200px;
     location:                       center;
-    x-offset:                       565;
+    x-offset:                       865;
     y-offset:                       383;
 }
 

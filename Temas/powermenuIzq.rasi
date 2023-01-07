@@ -27,11 +27,11 @@ window {
     text-color:                     @fg;
 	border:							0px;
 	border-color:					@ac;
-    border-radius:                  0px;
-	width:							150px;
+    border-radius:                  5px;
+	width:							170px;
     location:                       center;
-    x-offset:                       -885;
-    y-offset:                       383;
+    x-offset:                       880;
+    y-offset:                       -383;
 }
 
 prompt {
@@ -111,7 +111,7 @@ element-icon {
 
 element-text {
     expand:                         true;
-    horizontal-align:               0;
+    horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0px 2.5px 0px 2.5px;
 	background-color:				@al;

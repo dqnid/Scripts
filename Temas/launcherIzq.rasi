@@ -27,11 +27,11 @@ window {
     text-color:                     @fg;
 	border:							0px;
 	border-color:					@ac;
-    border-radius:                  0px;
+    border-radius:                  5px;
 	width:							400px;
-    location:                       center;
-    x-offset:                       -760;
-    y-offset:                       357;
+    location:                       top;
+    x-offset:                       0;
+    y-offset:                       0;
 }
 
 prompt {

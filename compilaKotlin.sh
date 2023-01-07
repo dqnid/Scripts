@@ -8,7 +8,7 @@ if test $# -eq 1; then
 	else
 		kotlinc "$dir/$1" -include-runtime -d "$dir/$jar.jar"
 	fi
-elif test $# -eq 2; then
+elif test $# -ge 2; then
 	dir=$(pwd)
 	jar=$(echo $2 | awk -F'.kt' '{print $1}')
 	if test $1 -eq 1; then

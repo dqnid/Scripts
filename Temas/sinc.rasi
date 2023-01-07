@@ -27,7 +27,7 @@ window {
     text-color:                     @fg;
 	border:							0px;
 	border-color:					@ac;
-    border-radius:                  0px;
+    border-radius:                  5px;
 	width:							270px;
     location:                       center;
     x-offset:                       0;
@@ -48,7 +48,7 @@ entry {
     placeholder-color:              @fg;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search...";
+    placeholder:                    "Escoge...";
     padding:                        0px 0px 0px 8px;
     blink:                          true;
 }
@@ -69,7 +69,7 @@ listview {
     background-color:               @al;
     padding:                        0px;
     columns:                        1;
-    lines:                          6;
+    lines:                          2;
     spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
