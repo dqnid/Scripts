@@ -11,12 +11,17 @@ contra() {
          -theme ~/Scripts/Temas/confirm.rasi
 }
 
-antena=$(iwctl device list | grep on | awk '{print $2}')
-iwctl station $antena scan #posible error
-redes=$(iwctl station $antena get-networks | grep '*' | awk '{print $1}')
-if test $? == 1; then
-	return 1;
-fi
+antena="wlan0"
+
+# Refresco primero
+iwctl station $antena get-networks
+redes=$(iwctl station $antena get-networks | grep '*' | awk '{print $2}')
+[[ $? == 1 ]] && exit 1
+
 eleccion=$(rofi -no-config -no-lazy-grab -sep "\n" -dmenu -i -p '¿Red a conectar?' -theme ~/Scripts/Temas/discos.rasi <<< $redes)
+[[ "$eleccion" == "" ]] && exit 1
+
 pass=$(contra &)
+[[ $pass == "" ]] && exit 1
 iwctl --passphrase $pass station $antena connect $eleccion
+[[ $? == 1 ]] && exit 1
