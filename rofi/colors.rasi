@@ -7,4 +7,5 @@
   fg:   #f5f5f5FF;
   ac:   #415a77FF;
   se:   #415a775A;
+  font: "Terminus 13";
 }
