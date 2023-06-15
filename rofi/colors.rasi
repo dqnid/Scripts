@@ -1,11 +1,12 @@
 /* colors */
+/* Primary blue 415a77*/
 
 * {
   al:   #00000000;
-  bg:   #090909CF;
-  bga:  #000000BF;
+  bg:   #101010FF;
+  bga:  #09090AA0;
   fg:   #f5f5f5FF;
-  ac:   #415a77FF;
-  se:   #415a775A;
-  font: "Terminus 13";
+  ac:   #2b3648FF;
+  se:   #2b36485A;
+  font: "Terminus 12";
 }
