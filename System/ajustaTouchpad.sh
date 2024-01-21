@@ -7,7 +7,7 @@ scroll=$(xinput list-props $id | grep "Natural Scrolling Enabled (" | awk '{prin
 echo $id $tap $speed
 
 xinput set-prop $id $tap 1
-xinput set-prop $id $speed 0.4
+xinput set-prop $id $speed 0.12
 xinput set-prop $id $scroll 1
 
 unset id

@@ -3,10 +3,10 @@
 
 * {
   al:   #00000000;
-  bg:   #101010FF;
-  bga:  #09090AA0;
+  bg:   #101010BF;
+  bga:  #09090ABA;
   fg:   #f5f5f5FF;
-  ac:   #2b3648FF;
-  se:   #2b36485A;
+  ac:   #58809aFF;
+  se:   #58809a5A;
   font: "Terminus 12";
 }
