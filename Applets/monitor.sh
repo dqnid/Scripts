@@ -1,6 +1,7 @@
 #!/bin/bash
 interno=eDP
-externo=HDMI-A-0
+externo=DisplayPort-0
+#externo=HDMI-A-0
 
 #Todo mal pero tremendo palo cambiarlo:
 # ejecutar un solo randr con variables
@@ -10,7 +11,7 @@ externo=HDMI-A-0
 
 lidstate="$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')"
 
-if test $lidstate == "closed"; then 
+if test $lidstate == "closed"; then
 		xrandr --output "$interno" --auto --output "$externo" --auto --above "$interno" --output "$externo2" --off
 		xrandr --output "$externo" --mode 1920x1080 --rate 120 --output "$interno" --off
   elif xrandr | grep "$externo connected"; then
@@ -25,18 +26,18 @@ if test $lidstate == "closed"; then
     "Dual Side Low")
       xrandr --output HDMI-A-0 --mode 1600x900 --pos 0x0 --rotate normal --output eDP --primary --mode 1920x1080 --rate 60 --pos 0x1080 --rotate normal
     ;;
-    Duplicar) 
+    Duplicar)
       xrandr --output "$interno" --auto --output "$externo" --same-as "$interno"
     ;;
-    Externa) 
+    Externa)
       xrandr --output "$interno" --auto --output "$externo" --auto --above "$interno" --output "$externo2" --off
       xrandr --output "$externo" --mode 1920x1080 --rate 144 --output "$interno" --off
     ;;
-    Interna) 
+    Interna)
       xrandr --output "$externo" --off --output "$interno" --auto
     ;;
     esac
-  else 
+  else
     xrandr --output "$externo" --off --output "$externo2" --off --output "$interno" --auto
 fi
 [[ "eleccion" = "" ]] && exit 1

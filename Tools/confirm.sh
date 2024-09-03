@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-dir="~/.config/polybar/floating/scripts/rofi"
+dir="~/Scripts/rofi"
 
 confirm_exit() {
 	rofi -dmenu\
@@ -10,9 +10,6 @@ confirm_exit() {
 		-theme $dir/confirm.rasi
 }
 
-msg() {
-	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
-}
 
   if test $# == 0; then
     echo "./confirm logout|suspend|poweroff|reboot "
@@ -40,6 +37,4 @@ ans=$(confirm_exit &)
   esac
   elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 exit 0
-  else
-	msg
 fi

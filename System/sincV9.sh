@@ -14,7 +14,7 @@ ask_operation(){
 }
 
 ask_what_to_sync(){
-	rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p 'Files To Sync' -width 12 -line-padding 3 -lines 2 -theme /home/danih/Scripts/rofi/sinc.rasi <<< "Full|Documents|Images|Videos|Music"
+	rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p 'Files To Sync' -width 12 -line-padding 3 -lines 2 -theme /home/danih/Scripts/rofi/sinc.rasi <<< "Notes|Full|Documents|Images|Videos|Music"
 }
 
 localAccess=$(ping -c 1 192.168.1.144)
@@ -30,8 +30,6 @@ else
   fi
 fi
 
-
-
 operation=$(ask_operation &)
 files_to_sync=$(ask_what_to_sync &)
 echo $url
@@ -45,42 +43,47 @@ case "$operation" in
         origin="$url:/home/dqnid/"
         ;;
 esac
+
+# TODO:array=($(ls -d */)) 
 case "$files_to_sync" in
+    Notes)
+      rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/Documents/Anotaciones/ $dest/Documents/Anotaciones/
+      ;;
     Full)
         for dir in "${docs[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
         for dir in "${images[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
         for dir in "${videos[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
-        rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/Music/ $dest/Music/
+        rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/Music/ $dest/Music/
       ;;
     Documents)
         for dir in "${docs[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
         ;;
     Images)
         for dir in "${images[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
         ;;
     Videos)
         for dir in "${videos[@]}"
         do
-            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/$dir $dest/$dir
+            rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/$dir $dest/$dir
         done
         ;;
     Music)
-        rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" --delete-after $origin/Music/ $dest/Music/
+        rsync -vrP -e "ssh -i ~/.ssh/id_new_server_dqnid" $origin/Music/ $dest/Music/
         ;;
 esac
 
